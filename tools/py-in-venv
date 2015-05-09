@@ -1,0 +1,27 @@
+#!/bin/bash -e
+
+if [[ $# -lt 1 ]]; then
+  >&2 echo "Error, required arg with appropriate value not provided"
+  echo -e "Usage:\n${0} 'dir' 'command'"
+  exit 1
+else
+  BASE="$1"
+  BUILD="${BASE}/build"
+  VE="${BASE}/ve"
+
+  echo "Using: $BASE $BUILD $VE"
+
+  if [ ! -d "$VE" ]; then
+    virtualenv -p $(which python2) -q "$VE"
+  fi
+
+  source ${VE}/bin/activate
+  cd $BASE
+  export PYTHONPATH=$BUILD:$BASE/src:$PYTHONPATH
+  pip install -r requirements.txt
+  pip install wheel
+
+  export PATH=$VE/bin:$PATH
+  # run input command
+  exec ${@:2}
+fi
