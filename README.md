@@ -4,13 +4,13 @@
 
 ## Using the bootstrap script
 
-
+(TODO)
 
 ## Getting Started
 
 (TODO: write! Mention need to obtain a SoftLayer account)
 
-### Workstation tool installation
+### Development setup tool installation
 
 (Directions tried on Mac OS X 10.10.3, Arch Linux x86_64 on 5/9/15, and Ubuntu 15.04)
 
@@ -38,9 +38,9 @@ If using Ubuntu, execute:
 
 #### Common installation steps
 
-0. Install the SoftLayer and Paramiko Python libraries from PyPI:
+0. Install the softlayer_saltmaster_bootstrap module (execute from the root directory of this project):
 
-        sudo pip install paramiko SoftLayer
+        sudo pip install -e ./python/
 
 ### SoftLayer CLI tool configuration
 

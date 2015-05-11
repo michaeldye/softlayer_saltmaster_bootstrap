@@ -9,7 +9,7 @@ import pbr.packaging
 @wraps(pbr.packaging.get_version)
 def new_get_version(package_name, pre_version=None):
     import os
-    with open(os.path.join('..', 'VERSION'), 'r') as version:
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'VERSION'), 'r') as version:
         return version.read().rstrip()
     raise Exception("please ensure this project has a VERSION file at its root")
 
